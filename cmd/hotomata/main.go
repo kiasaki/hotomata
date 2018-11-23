@@ -11,7 +11,7 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Name = "hotomata"
-	app.Usage = "tool to execute masterplans and do remdote execution"
+	app.Usage = "tool to execute masterplan scripts againt an inventory via ssh"
 	app.Version = "0.1.0"
 	app.Authors = []cli.Author{
 		cli.Author{
