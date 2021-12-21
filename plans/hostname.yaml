@@ -1,0 +1,31 @@
+# hostname
+#
+# Sets the hostname
+---
+
+vars:
+  hostname:
+
+plans:
+  - $name: Changing hostname
+    $run: "echo '{{hostname}}'"
+    $local: true
+
+  - $name: Make sure we have a hostname
+    $plan: assert
+    that: "'{{ hostname }}' != ''"
+
+  - $name: Change hostname
+    $plan: file-write
+    $sudo: true
+    path: /etc/hostname
+    contents: "{{ hostname }}"
+
+  - $name: Update hostname in hosts
+    $run: sed -i 's/127.0.0.1.*/127.0.0.1\tlocalhost {{ hostname }}/g' /etc/hosts
+    $sudo: true
+
+  - $name: Restart hostname service
+    $plan: service-restart
+    service: hostname
+

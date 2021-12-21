@@ -1,0 +1,37 @@
+[
+  {
+    "group_name": "do",
+    "ssh_port": 22,
+    "ssh_key": "/Users/kiasaki/.ssh/id_rsa",
+    "ssh_username": "ubuntu",
+    "provider": "do",
+    "machines": [
+      {
+        "group_name": "lb",
+        "role": "lb",
+        "app": "app-x",
+        "machines": [
+          {
+            "name": "lb1.app-x",
+            "ssh_hostname": "lb1.app-x.kiasaki.com"
+          }
+        ]
+      },
+      {
+        "group_name": "web",
+        "role": "web",
+        "app": "app-x",
+        "machines": [
+          {
+            "name": "web1.app-x",
+            "ssh_hostname": "web1.app-x.kiasaki.com"
+          },
+          {
+            "name": "web2.app-x",
+            "ssh_hostname": "web2.app-x.kiasaki.com"
+          }
+        ]
+      }
+    ]
+  }
+]

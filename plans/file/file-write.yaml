@@ -1,0 +1,15 @@
+# file-write
+#
+# Write contents of a file
+---
+
+vars:
+  path:
+  contents:
+
+plans:
+  - $name: Write contents to file
+    $run: |
+      cat << 'EOF' > {{ path }}
+      {{ contents }}
+      EOF

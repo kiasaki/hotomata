@@ -1,0 +1,14 @@
+# base-ubuntu
+#
+# Base system settings applied to all ubuntu hosts
+---
+
+plans:
+  - $name: Set hostname
+    $plan: hostname
+    hostname: "{{ name }}"
+    derp: derp
+
+  - $name: Set locale to UTF-8
+    $run: locale-gen en_CA.UTF-8
+    $sudo: true

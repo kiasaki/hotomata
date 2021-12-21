@@ -1,0 +1,12 @@
+# pkg-install
+#
+# Install a package using hosts package manager
+---
+
+vars:
+  packages:
+
+plans:
+  - $name: Install package {{packages}}
+    $run: apt-get install -y -q {{packages}}
+    $sudo: true

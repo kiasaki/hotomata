@@ -1,0 +1,12 @@
+# service-restart
+#
+# Restarts a service
+---
+
+vars:
+  service:
+
+plans:
+  - $name: Restart the service
+    $run: service {{ service }} restart
+    $sudo: true

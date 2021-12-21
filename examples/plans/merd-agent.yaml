@@ -1,0 +1,18 @@
+# merd-agent
+#
+# Install the merd agent
+---
+
+vars:
+  apiurl: api.merd.io
+  apikey:
+
+plans:
+  - $name: Download merd-agent binary
+    $run: wget -o /usr/bin/merd-agent https://github.com/kiasaki/muun/releases/download/v0.1/muun
+    $sudo: true
+
+  - $name: Write upstart
+    $plan: file-put
+    path: merd/files/upstart.conf.tmpl
+    dest: /etc/init.d/merd-agent.conf

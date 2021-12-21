@@ -1,0 +1,17 @@
+# assert
+#
+# Assertion helper to abort execution on certain condition
+---
+
+vars:
+  that:
+
+plans:
+  - $name: Run assertion
+    $run: |
+      {% if that %}
+      echo '{"action":"continue","status":"success"}' # assertion passed
+      {% else %}
+      echo '{"action":"abort","status":"warning"}' # assertion failed
+      {% endif %}
+    $local: true

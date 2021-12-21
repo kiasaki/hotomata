@@ -1,0 +1,27 @@
+---
+
+# Run basic setup on all machines we have for app-x
+- machines:
+    provider: do
+    app: app-x
+  plans:
+    - base-ubuntu
+    - merd-agent
+
+# Install nginx on load balancers
+- machines:
+    name: "lb*"
+    app: app-x
+  vars:
+    nginx_version: 1.4.2
+  plans:
+    - nginx
+
+# And node.js on web machines
+- machines:
+    name: "web*"
+    app: app-x
+  vars:
+    node_version: 0.12.1
+  plans:
+    - node

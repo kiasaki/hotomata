@@ -1,0 +1,17 @@
+# skip
+#
+# Helper to skip following plans if condition is met
+---
+
+vars:
+  cond:
+
+plans:
+  - $name: Run assertion
+    $run: |
+      {% if cond %}
+      echo '{"action":"abort","status":"skip"}'
+      {% else %}
+      echo '{"action":"continue","status":"success"}'
+      {% endif %}
+    $local: true

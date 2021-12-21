@@ -1,0 +1,14 @@
+# mongo
+#
+# mongodb commands
+---
+vars:
+  username:
+  password:
+
+plans:
+  - $name: Push config
+    $plan: file-put
+  - $name: Add user to mongodb
+    $plan: mongo-run
+    command: db.addUser('{{ username }}', '{{ password }}')
